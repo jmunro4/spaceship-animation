@@ -1,0 +1,35 @@
+Issue #1:
+Cylinder object does not display with the background on.
+
+Update:
+	(Theory) Is it possible the texture mapping code has colored the cylinder the same color as the background, and we can't see it in the display window?
+
+	Update: The above proposed theory is correct, the cylinder has been mapped along with the background.
+
+Solved: 
+	glDisable(TEXTURE_MAPPING_2D) before drawing the cylinder.
+
+
+Issue #2:
+Everytime glutPostRedisplay the window goes white
+-needed to reenable 2d textures for the background (Weaver)
+
+Ship texture moves
+- disable auto generate coords
+
+ship texture looks awful
+remap coords?
+	Fixed
+	Stray Line of texture code was removed
+
+SegFault
+	Program would only run with GDB and not as a standalone exe
+	Other stray line of code was trying to apply texture improperly
+
+Problem:
+	Lasers are supposed to spawn light sources positioned just above each laser object, but lights are absent.
+
+	Current lighting code is inside lazer.h, but lights do not appear.
+
+Resolved:
+	Needed glDisable(GL_TEXTURE_2D);
